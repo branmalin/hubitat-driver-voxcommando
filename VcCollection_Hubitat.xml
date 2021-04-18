@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--C:\Automation\VcCollection_Hubitat.xml-->
+<!--This groupCollection xml file was exported from VoxCommando-->
+<VoiceCommands version="2.3.0.8">
+    <groupCollection open="True" name="Hubitat">
+        <commandGroup open="True" name="Hubitat" enabled="True" prefix="" priority="0" requiredProcess="" description="">
+            <command id="291" name="Report Status" enabled="true" alwaysOn="False" confirm="False" requiredConfidence="0" loop="False" loopDelay="0" loopMax="0" description="">
+                <action>
+                    <cmdType>Map.Get</cmdType>
+                    <params>
+                        <param>Hubitat</param>
+                        <param>HubitatIP</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Results.SetVar</cmdType>
+                    <params>
+                        <param>HubitatIP</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Map.Get</cmdType>
+                    <params>
+                        <param>Hubitat</param>
+                        <param>HubitatPort</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Results.SetVar</cmdType>
+                    <params>
+                        <param>HubitatPort</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Scrape.Post</cmdType>
+                    <params>
+                        <param>http:\\{Var.HubitatIP}:{Var.HubitatPort}</param>
+                        <param>status={Status}</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <event>VC.On</event>
+                <event>VC.Standby</event>
+                <event>VC.Off</event>
+            </command>
+            <command id="284" name="Send Recognized Speech" enabled="true" alwaysOn="False" confirm="False" requiredConfidence="0" loop="False" loopDelay="0" loopMax="0" description="">
+                <action>
+                    <cmdType>Map.Get</cmdType>
+                    <params>
+                        <param>Hubitat</param>
+                        <param>HubitatIP</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Results.SetVar</cmdType>
+                    <params>
+                        <param>HubitatIP</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Map.Get</cmdType>
+                    <params>
+                        <param>Hubitat</param>
+                        <param>HubitatPort</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Results.SetVar</cmdType>
+                    <params>
+                        <param>HubitatPort</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <action>
+                    <cmdType>Scrape.Post</cmdType>
+                    <params>
+                        <param>http:\\{Var.HubitatIP}:{Var.HubitatPort}</param>
+                        <param>speech={LastSpoken}</param>
+                    </params>
+                    <cmdRepeat>1</cmdRepeat>
+                </action>
+                <event>VC.Recognized</event>
+            </command>
+        </commandGroup>
+    </groupCollection>
+</VoiceCommands>
